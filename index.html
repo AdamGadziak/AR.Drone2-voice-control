@@ -1,0 +1,92 @@
+<html>
+<head>
+<script src="jquery-1.11.1.min.js"></script>
+<script src="/dronestream/nodecopter-client.js" type="text/javascript" charset="utf-8"></script>
+<script src="annyang.min.js"></script>
+<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css.css">
+<script src="ann.js"></script>
+</head>
+<body>
+<div class="jumbotron">
+<h2>Welcome in my awesome voice-command drone application</h2>
+</div>
+<div id="audio"></div>
+<div class="row">
+<div class="col-md-3">
+<h2>Voice commands</h2>
+<h3>start</h3>
+<h3>stop</h3>
+<h3>land</h3>
+<h3>flip left</h3>
+<h3>flip right</h3>
+</div>
+  <div class="col-md-6">
+    <div id="droneStream" style="width: 640px; height: 360px">   </div>
+  </div>
+    <div class="col-md-3">
+    <h1>Action buttons</h1>
+    <div class="row">
+        <input name="start" id="start" value="start" type="submit" class="btn btn-success" />
+        <input name="stop" id="stop" value="stop" type="submit" class="btn btn-warning"/>
+    </div>
+    <div class="row">
+        <input name="front" id="front" value="front" type="submit" class="btn btn-success"/>
+        <input name="back" id="back" value="back" type="submit" class="btn btn-success"/>
+        <input name="left" id="left" value="left" type="submit" class="btn btn-success"/>
+        <input name="right" id="right" value="right" type="submit" class="btn btn-success"/>
+    </div>
+    <div class="row">
+        <input name="flipf" id="flipf" value="flip ahead" type="submit" class="btn btn-primary"/>
+        <input name="flipb" id="flipb" value="flip behind" type="submit" class="btn btn-primary"/>
+        <input name="flipl" id="flipl" value="flip left" type="submit" class="btn btn-primary"/>
+        <input name="flipr" id="flipr" value="flip right" type="submit" class="btn btn-primary"/>
+    </div>
+    <div class="row">
+        <input name="land" id="land" value="land" type="submit" class="btn btn-danger"/>
+        <input name="fibo" id="fibo" value="fibo" type="submit" class="btn btn-danger"/>
+    </div>
+</div>
+</div>
+    <script>
+    $('#start').click(function(){
+            $.post('/start');
+        });
+    $('#stop').click(function(){
+            $.post('/stop');
+        });
+    $('#left').click(function(){
+            $.post('/left');
+        });
+    $('#right').click(function(){
+            $.post('/right');
+        });
+    $('#front').click(function(){
+            $.post('/front');
+        });
+    $('#back').click(function(){
+            $.post('/back');
+        });
+    $('#flipf').click(function(){
+            $.post('/flipf');
+        });
+    $('#flipb').click(function(){
+            $.post('/flipb');
+        });
+    $('#flipl').click(function(){
+            $.post('/flipl');
+        });
+    $('#flipr').click(function(){
+            $.post('/flipr');
+        });
+    $('#land').click(function(){
+            $.post('/land');
+        });
+    $('#fibo').click(function(){for(i=0,j=1,k=0; k<50;i=j,j=x,k++ ){x=i+j;alert(x);}}
+        );
+    </script>
+<script>
+  // video canvas will auto-size to the DOM-node, or default to 640*360 if no size is set.
+  new NodecopterStream(document.getElementById("droneStream"));
+</script>
+</body>
